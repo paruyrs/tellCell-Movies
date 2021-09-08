@@ -10,7 +10,7 @@ class MainActivityViewModel : ViewModel() {
 
     var servicesLiveData: MutableLiveData<Movies>? = null
 
-    fun getUser(): LiveData<Movies>? {
+    fun getMovies(): LiveData<Movies>? {
         servicesLiveData = MainActivityRepository.getServicesApiCall()
         return servicesLiveData
     }
