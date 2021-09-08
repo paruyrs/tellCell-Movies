@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         mainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         adapter = MoviesAdapter {
-            val intent = Intent(this@MainActivity,MovieDetailsActivity::class.java)
-            intent.putExtra("movieID",it.id)
+            val intent = Intent(this@MainActivity, MovieDetailsActivity::class.java)
+            intent.putExtra("movieID", it.id)
             startActivity(intent)
         }
 
@@ -40,15 +40,10 @@ class MainActivity : AppCompatActivity() {
         mainActivityViewModel.servicesLiveData?.value?.let { adapter.replaceItems(it.movies) }
 
         binding.btnClick.setOnClickListener {
-
-
             mainActivityViewModel.getMovies()!!.observe(this, Observer { serviceSetterGetter ->
                 val movies = serviceSetterGetter.movies
                 adapter.replaceItems(movies)
-
             })
-
         }
-
     }
 }

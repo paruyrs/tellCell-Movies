@@ -27,7 +27,7 @@ object MainActivityRepository {
             ) {
                 Log.v("DEBUG : ", response.body().toString())
                 val data = response.body()
-                val movies = data!!.movies
+                val movies = data!!.movies.filter { movie -> !movie.adult  }
                 serviceSetterGetter.value = Movies(movies)
             }
         })
